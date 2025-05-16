@@ -9,7 +9,7 @@ public sealed record LongChoiceTests
     public void CorrectChooseOnTrueCondition()
     {
         ILong valueOnTrue = new Long(1);
-        ILong valueOnFalse = new Long(1);
+        ILong valueOnFalse = new Long(0);
         ILong choice = new LongChoice(new True(), valueOnTrue, valueOnFalse);
         Assert.Equal(valueOnTrue.Value, choice.Value);
     }
@@ -18,7 +18,7 @@ public sealed record LongChoiceTests
     public void CorrectChooseOnFalseCondition()
     {
         ILong valueOnTrue = new Long(1);
-        ILong valueOnFalse = new Long(1);
+        ILong valueOnFalse = new Long(0);
         ILong choice = new LongChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(valueOnFalse.Value, choice.Value);
     }

@@ -1,4 +1,5 @@
 ﻿using Pure.Primitives.Bool;
+using System;
 
 namespace Pure.Primitives.Number;
 
@@ -18,4 +19,14 @@ public sealed record UIntChoice : IUInt
     }
 
     uint IUInt.Value => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+
+    public override int GetHashCode()
+    {
+        throw new NotSupportedException();
+    }
+
+    public override string ToString()
+    {
+        throw new NotSupportedException();
+    }
 }

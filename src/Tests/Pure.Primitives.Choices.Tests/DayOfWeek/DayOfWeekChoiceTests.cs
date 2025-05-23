@@ -1,8 +1,9 @@
 ﻿using Pure.Primitives.Abstractions.DayOfWeek;
 using Pure.Primitives.Bool;
+using Pure.Primitives.Choices.DayOfWeek;
 using Pure.Primitives.DayOfWeek;
 
-namespace Pure.Primitives.Tests.DayOfWeek;
+namespace Pure.Primitives.Choices.Tests.DayOfWeek;
 
 public sealed record DayOfWeekChoiceTests
 {

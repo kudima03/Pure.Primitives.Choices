@@ -1,8 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.Guid;
 using Pure.Primitives.Bool;
-using Pure.Primitives.Guid;
+using Pure.Primitives.Choices.Guid;
 
-namespace Pure.Primitives.Tests.Guid;
+namespace Pure.Primitives.Choices.Tests.Guid;
 
 using Guid = Primitives.Guid.Guid;
 

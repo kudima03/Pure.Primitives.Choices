@@ -1,8 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.String;
 using Pure.Primitives.Bool;
-using Pure.Primitives.String;
+using Pure.Primitives.Choices.String;
 
-namespace Pure.Primitives.Tests.String;
+namespace Pure.Primitives.Choices.Tests.String;
 
 using String = Primitives.String.String;
 

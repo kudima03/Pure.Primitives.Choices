@@ -1,7 +1,7 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Char;
 
-namespace Pure.Primitives.Char;
+namespace Pure.Primitives.Choices.Char;
 
 public sealed record CharChoice : IChar
 {

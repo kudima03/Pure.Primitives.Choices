@@ -1,6 +1,6 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 
-namespace Pure.Primitives.Bool;
+namespace Pure.Primitives.Choices.Bool;
 
 public sealed record BoolChoice : IBool
 {

@@ -1,7 +1,7 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Guid;
 
-namespace Pure.Primitives.Guid;
+namespace Pure.Primitives.Choices.Guid;
 
 public sealed record GuidChoice : IGuid
 {

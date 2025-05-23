@@ -1,7 +1,7 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.String;
 
-namespace Pure.Primitives.String;
+namespace Pure.Primitives.Choices.String;
 
 public sealed record StringChoice : IString
 {

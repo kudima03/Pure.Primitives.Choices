@@ -1,8 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Bool;
-using Pure.Primitives.Number;
+using Pure.Primitives.Choices.Number;
 
-namespace Pure.Primitives.Tests.Number;
+namespace Pure.Primitives.Choices.Tests.Number;
 
 using Double = Primitives.Number.Double;
 

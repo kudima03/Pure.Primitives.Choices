@@ -1,8 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Bool;
-using Pure.Primitives.Char;
+using Pure.Primitives.Choices.Char;
 
-namespace Pure.Primitives.Tests.Char;
+namespace Pure.Primitives.Choices.Tests.Char;
 
 using Char = Primitives.Char.Char;
 

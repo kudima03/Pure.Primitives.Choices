@@ -2,7 +2,7 @@
 using Pure.Primitives.Abstractions.DayOfWeek;
 using Pure.Primitives.Abstractions.Number;
 
-namespace Pure.Primitives.DayOfWeek;
+namespace Pure.Primitives.Choices.DayOfWeek;
 
 public sealed record DayOfWeekChoice : IDayOfWeek
 {

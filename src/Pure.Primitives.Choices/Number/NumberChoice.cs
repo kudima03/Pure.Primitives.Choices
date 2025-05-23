@@ -1,7 +1,7 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Number;
 
-namespace Pure.Primitives.Number;
+namespace Pure.Primitives.Choices.Number;
 
 public sealed record NumberChoice<T> : INumber<T> where T : System.Numerics.INumber<T>
 {

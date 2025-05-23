@@ -1,7 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Bool;
+using Pure.Primitives.Choices.Bool;
 
-namespace Pure.Primitives.Tests.Bool;
+namespace Pure.Primitives.Choices.Tests.Bool;
 
 public sealed record BoolChoiceTests
 {

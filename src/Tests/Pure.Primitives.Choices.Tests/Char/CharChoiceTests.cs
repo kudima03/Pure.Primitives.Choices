@@ -1,4 +1,5 @@
-﻿using Pure.Primitives.Bool;
+﻿using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Bool;
 using Pure.Primitives.Char;
 
 namespace Pure.Primitives.Tests.Char;

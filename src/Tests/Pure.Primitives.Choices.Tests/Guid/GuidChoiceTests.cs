@@ -1,4 +1,5 @@
-﻿using Pure.Primitives.Bool;
+﻿using Pure.Primitives.Abstractions.Guid;
+using Pure.Primitives.Bool;
 using Pure.Primitives.Guid;
 
 namespace Pure.Primitives.Tests.Guid;

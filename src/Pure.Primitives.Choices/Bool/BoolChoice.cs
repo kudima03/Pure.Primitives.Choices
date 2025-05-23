@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Bool;
 

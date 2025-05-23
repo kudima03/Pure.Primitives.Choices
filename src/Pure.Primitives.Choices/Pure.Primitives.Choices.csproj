@@ -10,4 +10,14 @@
     <PackageReference Include="Pure.Primitives.Abstractions" Version="0.1.2" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <PackageId>Pure.Primitives.Choices</PackageId>
+    <RootNamespace>Pure.Primitives.Choices</RootNamespace>
+    <AssemblyName>Pure.Primitives.Choices</AssemblyName>
+    <Version>0.1.0</Version>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Choices</PackageProjectUrl>
+  </PropertyGroup>
+
 </Project>

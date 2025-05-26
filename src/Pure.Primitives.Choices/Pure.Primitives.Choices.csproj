@@ -6,10 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Pure.Primitives.Abstractions" Version="0.1.2" />
-  </ItemGroup>
-
   <PropertyGroup>
     <PackageId>Pure.Primitives.Choices</PackageId>
     <RootNamespace>Pure.Primitives.Choices</RootNamespace>
@@ -19,5 +15,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Choices</PackageProjectUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pure.Primitives" Version="1.3.0" />
+  </ItemGroup>
 
 </Project>

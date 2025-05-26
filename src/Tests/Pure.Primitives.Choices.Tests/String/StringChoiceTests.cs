@@ -1,6 +1,8 @@
-﻿using Pure.Primitives.Abstractions.String;
+﻿using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.String;
+using System.Collections;
 
 namespace Pure.Primitives.Choices.Tests.String;
 
@@ -24,6 +26,34 @@ public sealed record StringChoiceTests
         IString valueOnFalse = new String("0");
         IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(valueOnFalse.Value, choice.Value);
+    }
+
+
+    [Fact]
+    public void EnumeratesAsTyped()
+    {
+        IString valueOnTrue = new String("1");
+        IString valueOnFalse = new String("0");
+        IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
+
+        Assert.True(valueOnFalse.Select(x => x.Value).SequenceEqual(choice.Select(x => x.Value)));
+    }
+
+    [Fact]
+    public void EnumeratesAsUntyped()
+    {
+        IString valueOnTrue = new String("1");
+        IString valueOnFalse = new String("0");
+        IEnumerable choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
+
+        ICollection<IChar> symbols = new List<IChar>();
+
+        foreach (object symbol in choice)
+        {
+            symbols.Add((symbol as IChar)!);
+        }
+
+        Assert.True(valueOnFalse.Select(x => x.Value).SequenceEqual(symbols.Select(x => x.Value)));
     }
 
     [Fact]

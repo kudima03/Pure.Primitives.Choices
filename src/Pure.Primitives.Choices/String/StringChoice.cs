@@ -1,7 +1,11 @@
 ﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.String;
+using System.Collections;
 
 namespace Pure.Primitives.Choices.String;
+
+using Char = Pure.Primitives.Char.Char;
 
 public sealed record StringChoice : IString
 {
@@ -18,7 +22,14 @@ public sealed record StringChoice : IString
         _valueOnFalse = valueOnFalse;
     }
 
-    string IString.Value => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+    string IString.Value => ValueInternal;
+
+    public string ValueInternal => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+
+    public IEnumerator<IChar> GetEnumerator()
+    {
+        return ValueInternal.Select(symbol => new Char(symbol)).GetEnumerator();
+    }
 
     public override int GetHashCode()
     {
@@ -28,5 +39,10 @@ public sealed record StringChoice : IString
     public override string ToString()
     {
         throw new NotSupportedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

@@ -28,7 +28,7 @@ public sealed record StringChoiceTests
         Assert.Equal(valueOnFalse.Value, choice.Value);
     }
 
-    
+
     [Fact]
     public void EnumeratesAsTyped()
     {

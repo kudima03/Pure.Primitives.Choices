@@ -13,7 +13,7 @@ public sealed record DayOfWeekChoiceTests
         IDayOfWeek valueOnTrue = new Monday();
         IDayOfWeek valueOnFalse = new Tuesday();
         IDayOfWeek choice = new DayOfWeekChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.DayNumber.Value, choice.DayNumber.Value);
+        Assert.Equal(valueOnTrue.DayNumberValue.NumberValue, choice.DayNumberValue.NumberValue);
     }
 
     [Fact]
@@ -22,7 +22,7 @@ public sealed record DayOfWeekChoiceTests
         IDayOfWeek valueOnTrue = new Monday();
         IDayOfWeek valueOnFalse = new Tuesday();
         IDayOfWeek choice = new DayOfWeekChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.DayNumber.Value, choice.DayNumber.Value);
+        Assert.Equal(valueOnFalse.DayNumberValue.NumberValue, choice.DayNumberValue.NumberValue);
     }
 
     [Fact]

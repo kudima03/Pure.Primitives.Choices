@@ -10,14 +10,14 @@ public sealed record BoolChoiceTests
     public void CorrectChooseOnTrueCondition()
     {
         IBool choice = new BoolChoice(new True(), new True(), new False());
-        Assert.True(choice.Value);
+        Assert.True(choice.BoolValue);
     }
 
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
         IBool choice = new BoolChoice(new False(), new True(), new False());
-        Assert.False(choice.Value);
+        Assert.False(choice.BoolValue);
     }
 
     [Fact]

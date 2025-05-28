@@ -14,7 +14,7 @@ public sealed record CharChoiceTests
         IChar valueOnTrue = new Char('A');
         IChar valueOnFalse = new Char('B');
         IChar choice = new CharChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.Value, choice.Value);
+        Assert.Equal(valueOnTrue.CharValue, choice.CharValue);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public sealed record CharChoiceTests
         IChar valueOnTrue = new Char('A');
         IChar valueOnFalse = new Char('B');
         IChar choice = new CharChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.Value, choice.Value);
+        Assert.Equal(valueOnFalse.CharValue, choice.CharValue);
     }
 
     [Fact]

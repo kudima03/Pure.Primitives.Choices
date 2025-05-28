@@ -22,9 +22,9 @@ public sealed record StringChoice : IString
         _valueOnFalse = valueOnFalse;
     }
 
-    string IString.Value => ValueInternal;
+    string IString.TextValue => ValueInternal;
 
-    public string ValueInternal => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+    public string ValueInternal => _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {

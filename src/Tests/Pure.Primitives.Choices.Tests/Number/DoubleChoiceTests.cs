@@ -14,7 +14,7 @@ public sealed record DoubleChoiceTests
         INumber<double> valueOnTrue = new Double(1.01);
         INumber<double> valueOnFalse = new Double(0.01);
         INumber<double> choice = new NumberChoice<double>(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.Value, choice.Value);
+        Assert.Equal(valueOnTrue.NumberValue, choice.NumberValue);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public sealed record DoubleChoiceTests
         INumber<double> valueOnTrue = new Double(1.01);
         INumber<double> valueOnFalse = new Double(0.01);
         INumber<double> choice = new NumberChoice<double>(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.Value, choice.Value);
+        Assert.Equal(valueOnFalse.NumberValue, choice.NumberValue);
     }
 
     [Fact]

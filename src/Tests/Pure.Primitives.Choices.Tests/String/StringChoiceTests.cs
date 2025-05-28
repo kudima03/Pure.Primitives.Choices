@@ -16,7 +16,7 @@ public sealed record StringChoiceTests
         IString valueOnTrue = new String("1");
         IString valueOnFalse = new String("0");
         IString choice = new StringChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.Value, choice.Value);
+        Assert.Equal(valueOnTrue.TextValue, choice.TextValue);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public sealed record StringChoiceTests
         IString valueOnTrue = new String("1");
         IString valueOnFalse = new String("0");
         IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.Value, choice.Value);
+        Assert.Equal(valueOnFalse.TextValue, choice.TextValue);
     }
 
 
@@ -36,7 +36,7 @@ public sealed record StringChoiceTests
         IString valueOnFalse = new String("0");
         IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
 
-        Assert.True(valueOnFalse.Select(x => x.Value).SequenceEqual(choice.Select(x => x.Value)));
+        Assert.True(valueOnFalse.Select(x => x.CharValue).SequenceEqual(choice.Select(x => x.CharValue)));
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public sealed record StringChoiceTests
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(valueOnFalse.Select(x => x.Value).SequenceEqual(symbols.Select(x => x.Value)));
+        Assert.True(valueOnFalse.Select(x => x.CharValue).SequenceEqual(symbols.Select(x => x.CharValue)));
     }
 
     [Fact]

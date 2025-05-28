@@ -14,7 +14,7 @@ public sealed record GuidChoiceTests
         IGuid valueOnTrue = new Guid();
         IGuid valueOnFalse = new Guid();
         IGuid choice = new GuidChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.Value, choice.Value);
+        Assert.Equal(valueOnTrue.GuidValue, choice.GuidValue);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public sealed record GuidChoiceTests
         IGuid valueOnTrue = new Guid();
         IGuid valueOnFalse = new Guid();
         IGuid choice = new GuidChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.Value, choice.Value);
+        Assert.Equal(valueOnFalse.GuidValue, choice.GuidValue);
     }
 
     [Fact]

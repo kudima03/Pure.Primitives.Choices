@@ -17,7 +17,7 @@ public sealed record BoolChoice : IBool
         _valueOnFalse = valueOnFalse;
     }
 
-    bool IBool.Value => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+    bool IBool.BoolValue => _condition.BoolValue ? _valueOnTrue.BoolValue : _valueOnFalse.BoolValue;
 
     public override int GetHashCode()
     {

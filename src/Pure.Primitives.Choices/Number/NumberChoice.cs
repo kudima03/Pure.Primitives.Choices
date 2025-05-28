@@ -18,7 +18,7 @@ public sealed record NumberChoice<T> : INumber<T> where T : System.Numerics.INum
         _valueOnFalse = valueOnFalse;
     }
 
-    T INumber<T>.Value => _condition.Value ? _valueOnTrue.Value : _valueOnFalse.Value;
+    T INumber<T>.NumberValue => _condition.BoolValue ? _valueOnTrue.NumberValue : _valueOnFalse.NumberValue;
 
     public override int GetHashCode()
     {

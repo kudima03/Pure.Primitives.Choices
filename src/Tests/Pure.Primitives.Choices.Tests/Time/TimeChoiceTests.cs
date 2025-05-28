@@ -15,13 +15,13 @@ public sealed record TimeChoiceTests
         ITime valueOnFalse = new Time(new TimeOnly(6, 5, 4, 3, 2));
         ITime choice = new TimeChoice(new True(), valueOnTrue, valueOnFalse);
         Assert.Equal(
-            new TimeOnly(valueOnTrue.Hour.NumberValue, 
+            new TimeOnly(valueOnTrue.Hour.NumberValue,
                 valueOnTrue.Minute.NumberValue,
                 valueOnTrue.Second.NumberValue,
                 valueOnTrue.Millisecond.NumberValue,
                 valueOnTrue.Microsecond.NumberValue),
             new TimeOnly(choice.Hour.NumberValue,
-                choice.Minute.NumberValue, 
+                choice.Minute.NumberValue,
                 choice.Second.NumberValue,
                 choice.Millisecond.NumberValue,
                 choice.Microsecond.NumberValue));
@@ -34,13 +34,13 @@ public sealed record TimeChoiceTests
         ITime valueOnFalse = new Time(new TimeOnly(6, 5, 4, 3, 2));
         ITime choice = new TimeChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(
-            new TimeOnly(valueOnFalse.Hour.NumberValue, 
+            new TimeOnly(valueOnFalse.Hour.NumberValue,
                 valueOnFalse.Minute.NumberValue,
                 valueOnFalse.Second.NumberValue,
                 valueOnFalse.Millisecond.NumberValue,
                 valueOnFalse.Microsecond.NumberValue),
             new TimeOnly(choice.Hour.NumberValue,
-                choice.Minute.NumberValue, 
+                choice.Minute.NumberValue,
                 choice.Second.NumberValue,
                 choice.Millisecond.NumberValue,
                 choice.Microsecond.NumberValue));

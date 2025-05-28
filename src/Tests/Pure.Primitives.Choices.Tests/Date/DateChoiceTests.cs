@@ -1,8 +1,6 @@
 ﻿using Pure.Primitives.Abstractions.Date;
-using Pure.Primitives.Abstractions.Guid;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Date;
-using Pure.Primitives.Choices.Guid;
 
 namespace Pure.Primitives.Choices.Tests.Date;
 
@@ -13,23 +11,22 @@ public sealed record DateChoiceTests
     [Fact]
     public void CorrectChooseOnTrueCondition()
     {
-        DateOnly today = DateOnly.FromDateTime(System.DateTime.Now);
-        DateOnly yesterday = DateOnly.FromDateTime(System.DateTime.Now.AddDays(-1));
-        IDate valueOnTrue = new Date(today);
-        IDate valueOnFalse = new Date(yesterday);
+        IDate valueOnTrue = new Date(new DateOnly(2024, 11, 5));
+        IDate valueOnFalse = new Date(new DateOnly(2025, 6, 1));
         IDate choice = new DateChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(today, new DateOnly(choice.Year.NumberValue, choice.Month.NumberValue, choice.Day.NumberValue));
+        Assert.Equal(
+            new DateOnly(valueOnTrue.Year.NumberValue, valueOnTrue.Month.NumberValue, valueOnTrue.Day.NumberValue),
+            new DateOnly(choice.Year.NumberValue, choice.Month.NumberValue, choice.Day.NumberValue));
     }
 
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
-        DateOnly today = DateOnly.FromDateTime(System.DateTime.Now);
-        DateOnly yesterday = DateOnly.FromDateTime(System.DateTime.Now.AddDays(-1));
-        IDate valueOnTrue = new Date(today);
-        IDate valueOnFalse = new Date(yesterday);
+        IDate valueOnTrue = new Date(new DateOnly(2024, 11, 5));
+        IDate valueOnFalse = new Date(new DateOnly(2025, 6, 1));
         IDate choice = new DateChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(yesterday,
+        Assert.Equal(
+            new DateOnly(valueOnFalse.Year.NumberValue, valueOnFalse.Month.NumberValue, valueOnFalse.Day.NumberValue),
             new DateOnly(choice.Year.NumberValue, choice.Month.NumberValue, choice.Day.NumberValue));
     }
 

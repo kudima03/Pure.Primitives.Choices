@@ -13,8 +13,10 @@ public sealed record DateTimeChoiceTests
     [Fact]
     public void CorrectChooseOnTrueCondition()
     {
-        IDateTime valueOnTrue = new DateTime(new Date(new DateOnly(2024, 11, 5)), new Time(new TimeOnly(1, 2, 3, 4, 5)));
-        IDateTime valueOnFalse = new DateTime(new Date(new DateOnly(2025, 12, 13)), new Time(new TimeOnly(6, 5, 4, 3, 2)));
+        System.DateTime dateTimeOnTrue = new System.DateTime(2024, 11, 5, 1, 2, 3, 4, 5).AddTicks(1);
+        System.DateTime dateTimeOnFalse = new System.DateTime(2025, 12, 13, 6, 5, 4, 3, 2).AddTicks(2);
+        IDateTime valueOnTrue = new DateTime(new Date(DateOnly.FromDateTime(dateTimeOnTrue)), new Time(TimeOnly.FromDateTime(dateTimeOnTrue)));
+        IDateTime valueOnFalse = new DateTime(new Date(DateOnly.FromDateTime(dateTimeOnFalse)), new Time(TimeOnly.FromDateTime(dateTimeOnFalse)));
         IDateTime choice = new DateTimeChoice(new True(), valueOnTrue, valueOnFalse);
         Assert.Equal(
             new System.DateTime(
@@ -35,13 +37,17 @@ public sealed record DateTimeChoiceTests
                     choice.Second.NumberValue,
                     choice.Millisecond.NumberValue,
                     choice.Microsecond.NumberValue)));
+
+        Assert.Equal(valueOnTrue.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
     }
 
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
-        IDateTime valueOnTrue = new DateTime(new Date(new DateOnly(2024, 11, 5)), new Time(new TimeOnly(1, 2, 3, 4, 5)));
-        IDateTime valueOnFalse = new DateTime(new Date(new DateOnly(2025, 12, 13)), new Time(new TimeOnly(6, 5, 4, 3, 2)));
+        System.DateTime dateTimeOnTrue = new System.DateTime(2024, 11, 5, 1, 2, 3, 4, 5).AddTicks(1);
+        System.DateTime dateTimeOnFalse = new System.DateTime(2025, 12, 13, 6, 5, 4, 3, 2).AddTicks(2);
+        IDateTime valueOnTrue = new DateTime(new Date(DateOnly.FromDateTime(dateTimeOnTrue)), new Time(TimeOnly.FromDateTime(dateTimeOnTrue)));
+        IDateTime valueOnFalse = new DateTime(new Date(DateOnly.FromDateTime(dateTimeOnFalse)), new Time(TimeOnly.FromDateTime(dateTimeOnFalse)));
         IDateTime choice = new DateTimeChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(
             new System.DateTime(
@@ -62,6 +68,8 @@ public sealed record DateTimeChoiceTests
                     choice.Second.NumberValue,
                     choice.Millisecond.NumberValue,
                     choice.Microsecond.NumberValue)));
+
+        Assert.Equal(valueOnFalse.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
     }
 
     [Fact]

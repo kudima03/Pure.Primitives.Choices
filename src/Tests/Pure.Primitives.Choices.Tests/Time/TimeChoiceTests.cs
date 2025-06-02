@@ -11,8 +11,10 @@ public sealed record TimeChoiceTests
     [Fact]
     public void CorrectChooseOnTrueCondition()
     {
-        ITime valueOnTrue = new Time(new TimeOnly(1, 2, 3, 4, 5));
-        ITime valueOnFalse = new Time(new TimeOnly(6, 5, 4, 3, 2));
+        System.DateTime dateTimeOnTrue = new System.DateTime(2024, 11, 5, 1, 2, 3, 4, 5).AddTicks(1);
+        System.DateTime dateTimeOnFalse = new System.DateTime(2025, 12, 13, 6, 5, 4, 3, 2).AddTicks(2);
+        ITime valueOnTrue = new Time(TimeOnly.FromDateTime(dateTimeOnTrue));
+        ITime valueOnFalse = new Time(TimeOnly.FromDateTime(dateTimeOnFalse));
         ITime choice = new TimeChoice(new True(), valueOnTrue, valueOnFalse);
         Assert.Equal(
             new TimeOnly(valueOnTrue.Hour.NumberValue,
@@ -32,8 +34,10 @@ public sealed record TimeChoiceTests
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
-        ITime valueOnTrue = new Time(new TimeOnly(1, 2, 3, 4, 5));
-        ITime valueOnFalse = new Time(new TimeOnly(6, 5, 4, 3, 2));
+        System.DateTime dateTimeOnTrue = new System.DateTime(2024, 11, 5, 1, 2, 3, 4, 5).AddTicks(1);
+        System.DateTime dateTimeOnFalse = new System.DateTime(2025, 12, 13, 6, 5, 4, 3, 2).AddTicks(2);
+        ITime valueOnTrue = new Time(TimeOnly.FromDateTime(dateTimeOnTrue));
+        ITime valueOnFalse = new Time(TimeOnly.FromDateTime(dateTimeOnFalse));
         ITime choice = new TimeChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(
             new TimeOnly(valueOnFalse.Hour.NumberValue,

@@ -29,6 +29,8 @@ public sealed record TimeChoice : ITime
 
     public INumber<ushort> Microsecond => _condition.BoolValue ? _valueOnTrue.Microsecond : _valueOnFalse.Microsecond;
 
+    public INumber<ushort> Nanoseconds => _condition.BoolValue ? _valueOnTrue.Nanoseconds : _valueOnFalse.Nanoseconds;
+
     public override int GetHashCode()
     {
         throw new NotSupportedException();

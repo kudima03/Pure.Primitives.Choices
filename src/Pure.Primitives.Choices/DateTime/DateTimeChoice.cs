@@ -3,7 +3,7 @@ using Pure.Primitives.Abstractions.DateTime;
 using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Abstractions.Time;
 
-namespace Pure.Primitives.Choices.Time;
+namespace Pure.Primitives.Choices.DateTime;
 
 public sealed record DateTimeChoice : IDateTime
 {

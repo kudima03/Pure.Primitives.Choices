@@ -6,7 +6,7 @@ namespace Pure.Primitives.Choices.Tests.Number;
 
 using Double = Primitives.Number.Double;
 
-public sealed record DoubleChoiceTests
+public sealed record NumberChoiceTests
 {
     [Fact]
     public void CorrectChooseOnTrueCondition()

@@ -1,6 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Char;
+﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Char;
+using Randomizer;
+using Randomizer.Interfaces.ReferenceTypes;
 
 namespace Pure.Primitives.Choices.Tests.Char;
 
@@ -11,19 +14,47 @@ public sealed record CharChoiceTests
     [Fact]
     public void CorrectChooseOnTrueCondition()
     {
-        IChar valueOnTrue = new Char('A');
-        IChar valueOnFalse = new Char('B');
-        IChar choice = new CharChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.CharValue, choice.CharValue);
+        IRandomCharacter randomCharacter =  new RandomAlphanumericCharGenerator();
+
+        IEnumerable<IChar> valuesOnTrue =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new Char(randomCharacter.GenerateValue()))
+                .ToArray();
+
+        IEnumerable<IChar> valuesOnFalse =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new Char(randomCharacter.GenerateValue()))
+                .ToArray();
+
+        IBool condition = new True();
+
+        IEnumerable<IChar> choices = valuesOnTrue.Zip(valuesOnFalse,
+            (trueValue, falseValue) => new CharChoice(condition, trueValue, falseValue));
+
+        Assert.Equal(valuesOnTrue, choices, (valueOnTrue, choice) => valueOnTrue.CharValue == choice.CharValue);
     }
 
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
-        IChar valueOnTrue = new Char('A');
-        IChar valueOnFalse = new Char('B');
-        IChar choice = new CharChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.CharValue, choice.CharValue);
+        IRandomCharacter randomCharacter =  new RandomAlphanumericCharGenerator();
+
+        IEnumerable<IChar> valuesOnTrue =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new Char(randomCharacter.GenerateValue()))
+                .ToArray();
+
+        IEnumerable<IChar> valuesOnFalse =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new Char(randomCharacter.GenerateValue()))
+                .ToArray();
+
+        IBool condition = new False();
+
+        IEnumerable<IChar> choices = valuesOnTrue.Zip(valuesOnFalse,
+            (trueValue, falseValue) => new CharChoice(condition, trueValue, falseValue));
+
+        Assert.Equal(valuesOnFalse, choices, (valueOnTrue, choice) => valueOnTrue.CharValue == choice.CharValue);
     }
 
     [Fact]

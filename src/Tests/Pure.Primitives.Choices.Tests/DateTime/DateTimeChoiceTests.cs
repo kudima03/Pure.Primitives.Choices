@@ -35,6 +35,8 @@ public sealed record DateTimeChoiceTests
                     choice.Second.NumberValue,
                     choice.Millisecond.NumberValue,
                     choice.Microsecond.NumberValue)));
+
+        Assert.Equal(valueOnTrue.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
     }
 
     [Fact]
@@ -62,6 +64,8 @@ public sealed record DateTimeChoiceTests
                     choice.Second.NumberValue,
                     choice.Millisecond.NumberValue,
                     choice.Microsecond.NumberValue)));
+
+        Assert.Equal(valueOnFalse.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
     }
 
     [Fact]

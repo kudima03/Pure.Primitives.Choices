@@ -1,7 +1,11 @@
-﻿using Pure.Primitives.Abstractions.Char;
+﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.String;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.String;
+using Pure.Primitives.String;
+using Randomizer.Interfaces.ReferenceTypes;
+using Randomizer.Types;
 using System.Collections;
 
 namespace Pure.Primitives.Choices.Tests.String;
@@ -13,27 +17,57 @@ public sealed record StringChoiceTests
     [Fact]
     public void CorrectChooseOnTrueCondition()
     {
-        IString valueOnTrue = new String("1");
-        IString valueOnFalse = new String("0");
-        IString choice = new StringChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.TextValue, choice.TextValue);
+        IRandomString randomString = new RandomStringGenerator();
+
+        IEnumerable<IString> valuesOnTrue =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new String(randomString.GenerateValue()))
+                .ToArray();
+
+        IEnumerable<IString> valuesOnFalse =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new String(randomString.GenerateValue()))
+                .ToArray();
+
+        IBool condition = new True();
+
+        IEnumerable<IString> choices = valuesOnTrue.Zip(valuesOnFalse,
+            (trueValue, falseValue) => new StringChoice(condition, trueValue, falseValue));
+
+        Assert.Equal(valuesOnTrue, choices, (valueOnTrue, choice) => valueOnTrue.TextValue == choice.TextValue);
     }
 
     [Fact]
     public void CorrectChooseOnFalseCondition()
     {
-        IString valueOnTrue = new String("1");
-        IString valueOnFalse = new String("0");
-        IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.TextValue, choice.TextValue);
+        IRandomString randomString = new RandomStringGenerator();
+
+        IEnumerable<IString> valuesOnTrue =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new String(randomString.GenerateValue()))
+                .ToArray();
+
+        IEnumerable<IString> valuesOnFalse =
+            Enumerable.Range(0, 1000)
+                .Select(_ => new String(randomString.GenerateValue()))
+                .ToArray();
+
+        IBool condition = new False();
+
+        IEnumerable<IString> choices = valuesOnTrue.Zip(valuesOnFalse,
+            (trueValue, falseValue) => new StringChoice(condition, trueValue, falseValue));
+
+        Assert.Equal(valuesOnFalse, choices, (valueOnTrue, choice) => valueOnTrue.TextValue == choice.TextValue);
     }
 
 
     [Fact]
     public void EnumeratesAsTyped()
     {
-        IString valueOnTrue = new String("1");
-        IString valueOnFalse = new String("0");
+        IRandomString randomString = new RandomStringGenerator();
+
+        IString valueOnTrue = new String(randomString.GenerateValue());
+        IString valueOnFalse = new String(randomString.GenerateValue());
         IString choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
 
         Assert.True(valueOnFalse.Select(x => x.CharValue).SequenceEqual(choice.Select(x => x.CharValue)));
@@ -42,8 +76,10 @@ public sealed record StringChoiceTests
     [Fact]
     public void EnumeratesAsUntyped()
     {
-        IString valueOnTrue = new String("1");
-        IString valueOnFalse = new String("0");
+        IRandomString randomString = new RandomStringGenerator();
+
+        IString valueOnTrue = new String(randomString.GenerateValue());
+        IString valueOnFalse = new String(randomString.GenerateValue());
         IEnumerable choice = new StringChoice(new False(), valueOnTrue, valueOnFalse);
 
         ICollection<IChar> symbols = new List<IChar>();
@@ -59,12 +95,12 @@ public sealed record StringChoiceTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new StringChoice(new True(), new String("123"), new String("321")).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new StringChoice(new True(), new EmptyString(), new EmptyString()).GetHashCode());
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new StringChoice(new False(), new String("123"), new String("321")).ToString());
+        Assert.Throws<NotSupportedException>(() => new StringChoice(new False(), new EmptyString(), new EmptyString()).ToString());
     }
 }

@@ -28,7 +28,7 @@ public sealed record TimeChoiceTests
                 choice.Millisecond.NumberValue,
                 choice.Microsecond.NumberValue));
 
-        Assert.Equal(valueOnTrue.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
+        Assert.Equal(valueOnTrue.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]
@@ -51,7 +51,7 @@ public sealed record TimeChoiceTests
                 choice.Millisecond.NumberValue,
                 choice.Microsecond.NumberValue));
 
-        Assert.Equal(valueOnFalse.Nanoseconds.NumberValue, choice.Nanoseconds.NumberValue);
+        Assert.Equal(valueOnFalse.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]

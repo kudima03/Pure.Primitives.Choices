@@ -15,6 +15,7 @@ public sealed record DateTimeChoiceTests
         IDateTime valueOnFalse = new RandomDateTime();
         IDateTime choice = new DateTimeChoice(new True(), valueOnTrue, valueOnFalse);
         Assert.Equal(new MaterializedDateTime(valueOnTrue).Value, new MaterializedDateTime(choice).Value);
+        Assert.Equal(valueOnTrue.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]
@@ -24,6 +25,7 @@ public sealed record DateTimeChoiceTests
         IDateTime valueOnFalse = new RandomDateTime();
         IDateTime choice = new DateTimeChoice(new False(), valueOnTrue, valueOnFalse);
         Assert.Equal(new MaterializedDateTime(valueOnFalse).Value, new MaterializedDateTime(choice).Value);
+        Assert.Equal(valueOnFalse.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]

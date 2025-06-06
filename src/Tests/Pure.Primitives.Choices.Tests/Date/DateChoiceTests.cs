@@ -30,13 +30,13 @@ public sealed record DateChoiceTests
     public void ThrowExceptionOnGetHashCode()
     {
         Assert.Throws<NotSupportedException>(() =>
-            new DateChoice(new True(), new RandomDate(), new RandomDate())).GetHashCode();
+            new DateChoice(new True(), new RandomDate(), new RandomDate()).GetHashCode());
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
         Assert.Throws<NotSupportedException>(() =>
-            new DateChoice(new True(), new RandomDate(), new RandomDate())).ToString();
+            new DateChoice(new True(), new RandomDate(), new RandomDate()).ToString());
     }
 }

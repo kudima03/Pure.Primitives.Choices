@@ -29,7 +29,7 @@ public sealed record TimeChoice : ITime
 
     public INumber<ushort> Microsecond => _condition.BoolValue ? _valueOnTrue.Microsecond : _valueOnFalse.Microsecond;
 
-    public INumber<ushort> Nanoseconds => _condition.BoolValue ? _valueOnTrue.Nanoseconds : _valueOnFalse.Nanoseconds;
+    public INumber<ushort> Nanosecond => _condition.BoolValue ? _valueOnTrue.Nanosecond : _valueOnFalse.Nanosecond;
 
     public override int GetHashCode()
     {

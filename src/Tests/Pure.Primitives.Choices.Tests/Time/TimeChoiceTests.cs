@@ -1,8 +1,8 @@
 ﻿using Pure.Primitives.Abstractions.Time;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Time;
+using Pure.Primitives.Materialized.Time;
 using Pure.Primitives.Random.Time;
-using Pure.Primitives.Time;
 
 namespace Pure.Primitives.Choices.Tests.Time;
 

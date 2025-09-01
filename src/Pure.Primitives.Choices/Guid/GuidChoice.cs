@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Guid;
 
 namespace Pure.Primitives.Choices.Guid;
@@ -18,7 +18,8 @@ public sealed record GuidChoice : IGuid
         _valueOnFalse = valueOnFalse;
     }
 
-    System.Guid IGuid.GuidValue => _condition.BoolValue ? _valueOnTrue.GuidValue : _valueOnFalse.GuidValue;
+    System.Guid IGuid.GuidValue =>
+        _condition.BoolValue ? _valueOnTrue.GuidValue : _valueOnFalse.GuidValue;
 
     public override int GetHashCode()
     {

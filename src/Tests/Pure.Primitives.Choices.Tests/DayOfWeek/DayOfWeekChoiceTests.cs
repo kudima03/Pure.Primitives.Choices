@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.DayOfWeek;
+using Pure.Primitives.Abstractions.DayOfWeek;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.DayOfWeek;
 using Pure.Primitives.DayOfWeek;
@@ -13,7 +13,10 @@ public sealed record DayOfWeekChoiceTests
         IDayOfWeek valueOnTrue = new Monday();
         IDayOfWeek valueOnFalse = new Tuesday();
         IDayOfWeek choice = new DayOfWeekChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnTrue.DayNumberValue.NumberValue, choice.DayNumberValue.NumberValue);
+        Assert.Equal(
+            valueOnTrue.DayNumberValue.NumberValue,
+            choice.DayNumberValue.NumberValue
+        );
     }
 
     [Fact]
@@ -22,18 +25,25 @@ public sealed record DayOfWeekChoiceTests
         IDayOfWeek valueOnTrue = new Monday();
         IDayOfWeek valueOnFalse = new Tuesday();
         IDayOfWeek choice = new DayOfWeekChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(valueOnFalse.DayNumberValue.NumberValue, choice.DayNumberValue.NumberValue);
+        Assert.Equal(
+            valueOnFalse.DayNumberValue.NumberValue,
+            choice.DayNumberValue.NumberValue
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new DayOfWeekChoice(new True(), new Monday(), new Tuesday()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DayOfWeekChoice(new True(), new Monday(), new Tuesday()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new DayOfWeekChoice(new False(), new Monday(), new Tuesday()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DayOfWeekChoice(new False(), new Monday(), new Tuesday()).ToString()
+        );
     }
 }

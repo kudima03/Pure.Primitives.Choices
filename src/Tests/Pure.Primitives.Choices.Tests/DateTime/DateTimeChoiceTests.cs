@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.DateTime;
+using Pure.Primitives.Abstractions.DateTime;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.DateTime;
 using Pure.Primitives.Materialized.DateTime;
@@ -14,7 +14,10 @@ public sealed record DateTimeChoiceTests
         IDateTime valueOnTrue = new RandomDateTime();
         IDateTime valueOnFalse = new RandomDateTime();
         IDateTime choice = new DateTimeChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedDateTime(valueOnTrue).Value, new MaterializedDateTime(choice).Value);
+        Assert.Equal(
+            new MaterializedDateTime(valueOnTrue).Value,
+            new MaterializedDateTime(choice).Value
+        );
         Assert.Equal(valueOnTrue.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
@@ -24,21 +27,34 @@ public sealed record DateTimeChoiceTests
         IDateTime valueOnTrue = new RandomDateTime();
         IDateTime valueOnFalse = new RandomDateTime();
         IDateTime choice = new DateTimeChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedDateTime(valueOnFalse).Value, new MaterializedDateTime(choice).Value);
+        Assert.Equal(
+            new MaterializedDateTime(valueOnFalse).Value,
+            new MaterializedDateTime(choice).Value
+        );
         Assert.Equal(valueOnFalse.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() =>
-            new DateTimeChoice(new True(), new RandomDateTime(), new RandomDateTime()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DateTimeChoice(
+                new True(),
+                new RandomDateTime(),
+                new RandomDateTime()
+            ).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() =>
-            new DateTimeChoice(new True(), new RandomDateTime(), new RandomDateTime()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DateTimeChoice(
+                new True(),
+                new RandomDateTime(),
+                new RandomDateTime()
+            ).ToString()
+        );
     }
 }

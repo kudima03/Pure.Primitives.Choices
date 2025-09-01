@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Date;
+using Pure.Primitives.Abstractions.Date;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Date;
 using Pure.Primitives.Materialized.Date;
@@ -14,7 +14,10 @@ public sealed record DateChoiceTests
         IDate valueOnTrue = new RandomDate();
         IDate valueOnFalse = new RandomDate();
         IDate choice = new DateChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedDate(valueOnTrue).Value, new MaterializedDate(choice).Value);
+        Assert.Equal(
+            new MaterializedDate(valueOnTrue).Value,
+            new MaterializedDate(choice).Value
+        );
     }
 
     [Fact]
@@ -23,20 +26,25 @@ public sealed record DateChoiceTests
         IDate valueOnTrue = new RandomDate();
         IDate valueOnFalse = new RandomDate();
         IDate choice = new DateChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedDate(valueOnFalse).Value, new MaterializedDate(choice).Value);
+        Assert.Equal(
+            new MaterializedDate(valueOnFalse).Value,
+            new MaterializedDate(choice).Value
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() =>
-            new DateChoice(new True(), new RandomDate(), new RandomDate()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DateChoice(new True(), new RandomDate(), new RandomDate()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() =>
-            new DateChoice(new True(), new RandomDate(), new RandomDate()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new DateChoice(new True(), new RandomDate(), new RandomDate()).ToString()
+        );
     }
 }

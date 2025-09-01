@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Bool;
 
@@ -23,12 +23,16 @@ public sealed record BoolChoiceTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new BoolChoice(new False(), new True(), new False()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new BoolChoice(new False(), new True(), new False()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new BoolChoice(new True(), new False(), new False()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new BoolChoice(new True(), new False(), new False()).ToString()
+        );
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.Choices.Bool;
 
@@ -17,7 +17,8 @@ public sealed record BoolChoice : IBool
         _valueOnFalse = valueOnFalse;
     }
 
-    bool IBool.BoolValue => _condition.BoolValue ? _valueOnTrue.BoolValue : _valueOnFalse.BoolValue;
+    bool IBool.BoolValue =>
+        _condition.BoolValue ? _valueOnTrue.BoolValue : _valueOnFalse.BoolValue;
 
     public override int GetHashCode()
     {

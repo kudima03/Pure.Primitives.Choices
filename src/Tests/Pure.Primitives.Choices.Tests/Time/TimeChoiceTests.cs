@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Time;
+using Pure.Primitives.Abstractions.Time;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Time;
 using Pure.Primitives.Materialized.Time;
@@ -14,7 +14,10 @@ public sealed record TimeChoiceTests
         ITime valueOnTrue = new RandomTime();
         ITime valueOnFalse = new RandomTime();
         ITime choice = new TimeChoice(new True(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedTime(valueOnTrue).Value, new MaterializedTime(choice).Value);
+        Assert.Equal(
+            new MaterializedTime(valueOnTrue).Value,
+            new MaterializedTime(choice).Value
+        );
         Assert.Equal(valueOnTrue.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
@@ -24,19 +27,26 @@ public sealed record TimeChoiceTests
         ITime valueOnTrue = new RandomTime();
         ITime valueOnFalse = new RandomTime();
         ITime choice = new TimeChoice(new False(), valueOnTrue, valueOnFalse);
-        Assert.Equal(new MaterializedTime(valueOnFalse).Value, new MaterializedTime(choice).Value);
+        Assert.Equal(
+            new MaterializedTime(valueOnFalse).Value,
+            new MaterializedTime(choice).Value
+        );
         Assert.Equal(valueOnFalse.Nanosecond.NumberValue, choice.Nanosecond.NumberValue);
     }
 
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new TimeChoice(new True(), new RandomTime(), new RandomTime()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new TimeChoice(new True(), new RandomTime(), new RandomTime()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new TimeChoice(new True(), new RandomTime(), new RandomTime()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new TimeChoice(new True(), new RandomTime(), new RandomTime()).ToString()
+        );
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Char;
 
 namespace Pure.Primitives.Choices.Char;
@@ -18,7 +18,8 @@ public sealed record CharChoice : IChar
         _valueOnFalse = valueOnFalse;
     }
 
-    char IChar.CharValue => _condition.BoolValue ? _valueOnTrue.CharValue : _valueOnFalse.CharValue;
+    char IChar.CharValue =>
+        _condition.BoolValue ? _valueOnTrue.CharValue : _valueOnFalse.CharValue;
 
     public override int GetHashCode()
     {

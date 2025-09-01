@@ -1,11 +1,11 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using System.Collections;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.String;
-using System.Collections;
 
 namespace Pure.Primitives.Choices.String;
 
-using Char = Pure.Primitives.Char.Char;
+using Char = Primitives.Char.Char;
 
 public sealed record StringChoice : IString
 {
@@ -24,7 +24,8 @@ public sealed record StringChoice : IString
 
     string IString.TextValue => ValueInternal;
 
-    public string ValueInternal => _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
+    public string ValueInternal =>
+        _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {

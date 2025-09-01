@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Char;
 
@@ -29,12 +29,16 @@ public sealed record CharChoiceTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new CharChoice(new True(), new Char('A'), new Char('B')).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new CharChoice(new True(), new Char('A'), new Char('B')).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new CharChoice(new False(), new Char('A'), new Char('B')).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new CharChoice(new False(), new Char('A'), new Char('B')).ToString()
+        );
     }
 }

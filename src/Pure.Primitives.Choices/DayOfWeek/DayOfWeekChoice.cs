@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.DayOfWeek;
 using Pure.Primitives.Abstractions.Number;
 
@@ -12,14 +12,19 @@ public sealed record DayOfWeekChoice : IDayOfWeek
 
     private readonly IDayOfWeek _valueOnFalse;
 
-    public DayOfWeekChoice(IBool condition, IDayOfWeek valueOnTrue, IDayOfWeek valueOnFalse)
+    public DayOfWeekChoice(
+        IBool condition,
+        IDayOfWeek valueOnTrue,
+        IDayOfWeek valueOnFalse
+    )
     {
         _condition = condition;
         _valueOnTrue = valueOnTrue;
         _valueOnFalse = valueOnFalse;
     }
 
-    INumber<ushort> IDayOfWeek.DayNumberValue => _condition.BoolValue ? _valueOnTrue.DayNumberValue : _valueOnFalse.DayNumberValue;
+    INumber<ushort> IDayOfWeek.DayNumberValue =>
+        _condition.BoolValue ? _valueOnTrue.DayNumberValue : _valueOnFalse.DayNumberValue;
 
     public override int GetHashCode()
     {

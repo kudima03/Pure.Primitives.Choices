@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Abstractions.Time;
 
@@ -19,17 +19,23 @@ public sealed record TimeChoice : ITime
         _valueOnFalse = valueOnFalse;
     }
 
-    public INumber<ushort> Hour => _condition.BoolValue ? _valueOnTrue.Hour : _valueOnFalse.Hour;
+    public INumber<ushort> Hour =>
+        _condition.BoolValue ? _valueOnTrue.Hour : _valueOnFalse.Hour;
 
-    public INumber<ushort> Minute => _condition.BoolValue ? _valueOnTrue.Minute : _valueOnFalse.Minute;
+    public INumber<ushort> Minute =>
+        _condition.BoolValue ? _valueOnTrue.Minute : _valueOnFalse.Minute;
 
-    public INumber<ushort> Second => _condition.BoolValue ? _valueOnTrue.Second : _valueOnFalse.Second;
+    public INumber<ushort> Second =>
+        _condition.BoolValue ? _valueOnTrue.Second : _valueOnFalse.Second;
 
-    public INumber<ushort> Millisecond => _condition.BoolValue ? _valueOnTrue.Millisecond : _valueOnFalse.Millisecond;
+    public INumber<ushort> Millisecond =>
+        _condition.BoolValue ? _valueOnTrue.Millisecond : _valueOnFalse.Millisecond;
 
-    public INumber<ushort> Microsecond => _condition.BoolValue ? _valueOnTrue.Microsecond : _valueOnFalse.Microsecond;
+    public INumber<ushort> Microsecond =>
+        _condition.BoolValue ? _valueOnTrue.Microsecond : _valueOnFalse.Microsecond;
 
-    public INumber<ushort> Nanosecond => _condition.BoolValue ? _valueOnTrue.Nanosecond : _valueOnFalse.Nanosecond;
+    public INumber<ushort> Nanosecond =>
+        _condition.BoolValue ? _valueOnTrue.Nanosecond : _valueOnFalse.Nanosecond;
 
     public override int GetHashCode()
     {

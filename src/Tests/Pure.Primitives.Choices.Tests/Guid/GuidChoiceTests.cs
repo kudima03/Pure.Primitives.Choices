@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Guid;
+using Pure.Primitives.Abstractions.Guid;
 using Pure.Primitives.Bool;
 using Pure.Primitives.Choices.Guid;
 
@@ -29,12 +29,16 @@ public sealed record GuidChoiceTests
     [Fact]
     public void ThrowExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new GuidChoice(new True(), new Guid(), new Guid()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new GuidChoice(new True(), new Guid(), new Guid()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new GuidChoice(new False(), new Guid(), new Guid()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new GuidChoice(new False(), new Guid(), new Guid()).ToString()
+        );
     }
 }

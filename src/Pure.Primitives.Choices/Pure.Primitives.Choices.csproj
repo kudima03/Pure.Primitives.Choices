@@ -17,6 +17,6 @@
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Choices</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives" Version="3.2.0" />
+    <PackageReference Include="Pure.Primitives" Version="3.3.0" />
   </ItemGroup>
 </Project>

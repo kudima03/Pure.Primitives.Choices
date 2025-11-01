@@ -18,7 +18,7 @@ public sealed record GuidChoice : IGuid
         _valueOnFalse = valueOnFalse;
     }
 
-    System.Guid IGuid.GuidValue =>
+    public System.Guid GuidValue =>
         _condition.BoolValue ? _valueOnTrue.GuidValue : _valueOnFalse.GuidValue;
 
     public override int GetHashCode()

@@ -19,7 +19,7 @@ public sealed record NumberChoice<T> : INumber<T>
         _valueOnFalse = valueOnFalse;
     }
 
-    T INumber<T>.NumberValue =>
+    public T NumberValue =>
         _condition.BoolValue ? _valueOnTrue.NumberValue : _valueOnFalse.NumberValue;
 
     public override int GetHashCode()

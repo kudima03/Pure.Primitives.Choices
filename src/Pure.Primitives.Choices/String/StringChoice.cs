@@ -22,14 +22,11 @@ public sealed record StringChoice : IString
         _valueOnFalse = valueOnFalse;
     }
 
-    string IString.TextValue => ValueInternal;
-
-    public string ValueInternal =>
-        _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
+    public string TextValue => _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {
-        return ValueInternal.Select(symbol => new Char(symbol)).GetEnumerator();
+        return TextValue.Select(symbol => new Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()

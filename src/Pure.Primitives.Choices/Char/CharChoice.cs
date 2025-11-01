@@ -18,7 +18,7 @@ public sealed record CharChoice : IChar
         _valueOnFalse = valueOnFalse;
     }
 
-    char IChar.CharValue =>
+    public char CharValue =>
         _condition.BoolValue ? _valueOnTrue.CharValue : _valueOnFalse.CharValue;
 
     public override int GetHashCode()

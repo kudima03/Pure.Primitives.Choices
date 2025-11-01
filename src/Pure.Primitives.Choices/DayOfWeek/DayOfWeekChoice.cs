@@ -23,7 +23,7 @@ public sealed record DayOfWeekChoice : IDayOfWeek
         _valueOnFalse = valueOnFalse;
     }
 
-    INumber<ushort> IDayOfWeek.DayNumberValue =>
+    public INumber<ushort> DayNumberValue =>
         _condition.BoolValue ? _valueOnTrue.DayNumberValue : _valueOnFalse.DayNumberValue;
 
     public override int GetHashCode()

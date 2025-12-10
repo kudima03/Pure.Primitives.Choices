@@ -22,7 +22,8 @@ public sealed record StringChoice : IString
         _valueOnFalse = valueOnFalse;
     }
 
-    public string TextValue => _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
+    public string TextValue =>
+        _condition.BoolValue ? _valueOnTrue.TextValue : _valueOnFalse.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {

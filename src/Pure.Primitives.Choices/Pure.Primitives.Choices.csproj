@@ -14,9 +14,13 @@
     <AssemblyName>Pure.Primitives.Choices</AssemblyName>
     <Authors>Dmitry Kurochkin</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Choices</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Pure.Primitives" Version="3.6.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>
